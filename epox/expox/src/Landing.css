@@ -1,0 +1,698 @@
+/* Import Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Landing Container - Mobile First */
+.landing-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #8b7355 0%, #6d4c41 50%, #5d4037 100%);
+}
+
+/* Dark overlay for better text readability */
+.landing-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(62, 39, 35, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(62, 39, 35, 0.3) 100%);
+  z-index: 1;
+}
+
+/* Floating Background Orbs - Optimized for Mobile */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.15;
+  animation: float 8s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 150px;
+  height: 150px;
+  top: 10%;
+  left: -20%;
+  background: linear-gradient(45deg, #8b7355, #a0845c);
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 180px;
+  height: 180px;
+  top: 20%;
+  right: -25%;
+  background: linear-gradient(45deg, #f5f5f5, #e8e8e8);
+  animation-delay: 2.5s;
+}
+
+.orb-3 {
+  width: 120px;
+  height: 120px;
+  bottom: 15%;
+  left: 60%;
+  background: linear-gradient(45deg, #d4b896, #c4a173);
+  animation-delay: 5s;
+}
+
+/* Interactive Mouse Gradient - Disabled on Mobile */
+.mouse-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  display: none; /* Hidden on mobile by default */
+}
+
+/* Main Content Card */
+.content-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem 1.5rem;
+}
+
+.content-card.loaded {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Typography - Mobile Optimized with NEW ANIMATED TITLE */
+.main-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #f5f5dc; /* Cream color */
+  text-shadow: none; /* Removed text shadow */
+  position: relative;
+  background: linear-gradient(45deg, 
+    #f5f5dc 0%,    /* Cream */
+    #deb887 25%,   /* Burlywood (light brown) */
+    #f5deb3 50%,   /* Wheat (cream) */
+    #d2b48c 75%,   /* Tan (light brown) */
+    #f5f5dc 100%   /* Cream */
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: 
+    gradientShine 4s ease-in-out infinite,
+    textPulse 3s ease-in-out infinite alternate,
+    shimmerWave 6s linear infinite;
+}
+
+/* Add a subtle glow effect behind the text */
+.main-title::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(245, 245, 220, 0.3) 0%,
+    rgba(222, 184, 135, 0.4) 50%,
+    rgba(245, 245, 220, 0.3) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(1px);
+  animation: backgroundGlow 5s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+/* Add sparkle effects */
+.main-title::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(245, 245, 220, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(222, 184, 135, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 60% 20%, rgba(245, 245, 220, 0.4) 1px, transparent 1px),
+    radial-gradient(circle at 30% 80%, rgba(210, 180, 140, 0.5) 1px, transparent 1px);
+  animation: sparkle 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 8px rgba(0, 0, 0, 0.4);
+  font-style: italic;  
+}
+
+/* Buttons Container - Stack Vertically on Mobile */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* Button Base Styles - Mobile First */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  opacity: 1;
+  transform: translateY(0);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  touch-action: manipulation; /* Prevents zoom on double tap */
+  -webkit-tap-highlight-color: transparent; /* Removes tap highlight on iOS */
+}
+
+.btn:hover,
+.btn:active {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Facebook Button */
+.btn-fb {
+  background: linear-gradient(135deg, #4267b2 0%, #365899 100%);
+  color: white;
+  box-shadow: 
+    0 8px 25px rgba(66, 103, 178, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-fb:hover,
+.btn-fb:active {
+  background: linear-gradient(135deg, #5578c4 0%, #4267b2 100%);
+  box-shadow: 
+    0 12px 35px rgba(66, 103, 178, 0.35),
+    0 0 15px rgba(66, 103, 178, 0.2);
+}
+
+/* Call Button */
+.btn-call {
+  background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+  color: white;
+  box-shadow: 
+    0 8px 25px rgba(109, 76, 65, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-call:hover,
+.btn-call:active {
+  background: linear-gradient(135deg, #a1887f 0%, #8d6e63 100%);
+  box-shadow: 
+    0 12px 35px rgba(109, 76, 65, 0.35),
+    0 0 15px rgba(109, 76, 65, 0.2);
+}
+
+/* Button Shimmer Effect - Simplified for Mobile */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  border-radius: 1rem;
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:active::before {
+  left: 100%;
+}
+
+/* Button Icons */
+.btn i {
+  font-size: 1.1rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  position: relative;
+}
+
+.btn:active i {
+  transform: scale(1.1);
+}
+
+/* Button Text */
+.btn span {
+  z-index: 1;
+  position: relative;
+  font-weight: 600;
+}
+
+/* Ripple Effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(0);
+  animation: rippleEffect 0.6s ease-out;
+  pointer-events: none;
+}
+
+/* NEW ANIMATIONS FOR THE TITLE */
+@keyframes gradientShine {
+  0%, 100% { 
+    background-position: 0% 50%; 
+    filter: brightness(1);
+  }
+  50% { 
+    background-position: 100% 50%; 
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes textPulse {
+  0% { 
+    transform: scale(1); 
+    filter: brightness(1);
+  }
+  100% { 
+    transform: scale(1.02); 
+    filter: brightness(1.1);
+  }
+}
+
+@keyframes shimmerWave {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes backgroundGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.6;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+  75% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+/* Original Animations */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1); 
+  }
+  25% { 
+    transform: translateY(-15px) rotate(1deg) scale(1.03); 
+  }
+  50% { 
+    transform: translateY(8px) rotate(-0.5deg) scale(0.98); 
+  }
+  75% { 
+    transform: translateY(-8px) rotate(0.5deg) scale(1.01); 
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Small Phone Screens (320px - 480px) */
+@media (max-width: 480px) {
+  .landing-container {
+    padding: 0.75rem;
+  }
+  
+  .content-card {
+    padding: 1.5rem 1rem;
+    max-width: 100%;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+    max-width: 100%;
+    border-radius: 0.75rem;
+  }
+  
+  .btn i {
+    font-size: 1rem;
+  }
+  
+  .buttons-container {
+    gap: 0.875rem;
+  }
+  
+  .orb-1, .orb-2, .orb-3 {
+    filter: blur(30px);
+    opacity: 0.1;
+  }
+  
+  .orb-1 {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .orb-2 {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .orb-3 {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Very Small Screens (up to 360px) */
+@media (max-width: 360px) {
+  .main-title {
+    font-size: 1.75rem;
+  }
+  
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .content-card {
+    padding: 1.25rem 0.75rem;
+  }
+}
+
+/* Medium Phone Screens (481px - 640px) */
+@media (min-width: 481px) and (max-width: 640px) {
+  .content-card {
+    max-width: 450px;
+    padding: 2.5rem 2rem;
+  }
+  
+  .main-title {
+    font-size: 2.75rem;
+  }
+  
+  .subtitle {
+    font-size: 1.15rem;
+  }
+  
+  .btn {
+    max-width: 320px;
+  }
+  
+  .orb-1 {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .orb-2 {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .orb-3 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Tablet and Desktop */
+@media (min-width: 641px) {
+  .landing-container {
+    padding: 2rem;
+  }
+  
+  .content-card {
+    max-width: 90%;
+    padding: 3rem 2.5rem;
+  }
+  
+  .main-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  
+  .buttons-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .btn {
+    min-width: 160px;
+    max-width: none;
+    width: auto;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 1.2rem;
+  }
+  
+  .btn:hover {
+    transform: translateY(-4px) scale(1.05);
+  }
+  
+  .btn:hover::before {
+    left: 100%;
+  }
+  
+  .btn:hover i {
+    transform: scale(1.2) rotate(5deg);
+  }
+  
+  .mouse-gradient {
+    display: block; /* Enable mouse gradient on desktop */
+  }
+  
+  .orb-1 {
+    width: 300px;
+    height: 300px;
+    top: 5rem;
+    left: 5rem;
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+  
+  .orb-2 {
+    width: 300px;
+    height: 300px;
+    top: 8rem;
+    right: 5rem;
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+  
+  .orb-3 {
+    width: 300px;
+    height: 300px;
+    bottom: -2rem;
+    left: 40%;
+    filter: blur(60px);
+    opacity: 0.2;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .content-card {
+    max-width: 800px;
+  }
+}
+
+/* Accessibility & Performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .bg-orb {
+    animation: none;
+  }
+  
+  .btn::before {
+    display: none;
+  }
+  
+  /* Disable title animations for users who prefer reduced motion */
+  .main-title {
+    animation: none;
+    background: #f5f5dc;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .main-title::before,
+  .main-title::after {
+    display: none;
+  }
+}
+
+/* Focus States for Accessibility */
+.btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .content-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid white;
+  }
+  
+  .main-title {
+    color: white;
+    -webkit-text-fill-color: white;
+    background: none;
+    animation: none;
+  }
+  
+  .main-title::before,
+  .main-title::after {
+    display: none;
+  }
+  
+  .subtitle {
+    color: white;
+  }
+  
+  .btn {
+    border: 2px solid white;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .landing-container {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 50%, #0f0f0f 100%);
+  }
+}
+
+/* Safe Area Support for iPhone X and newer */
+@supports (padding: max(0px)) {
+  .landing-container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}

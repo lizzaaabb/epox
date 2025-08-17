@@ -1,0 +1,149 @@
+.candle-body {
+  display: flex;
+  justify-content: flex-start; /* keeps wrapper on left */
+  align-items: center; /* vertically centers wrapper */
+  height: 100vh;
+    background: #faf8f5;
+}
+
+.candle-text-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center; /* horizontally center inner content */
+  align-items: center; /* vertically center inner content */
+}
+
+.candle-text-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.candle-text-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.8), 
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(1px);
+  transform: skewX(-20deg);
+}
+
+@keyframes shimmer {
+  0% { left: -100px; }
+  50% { left: calc(100% + 50px); }
+  100% { left: calc(100% + 50px); }
+}
+
+.candle-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 400px;
+  gap: 15px;
+}
+
+.plaster-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 400px;
+  gap: 15px;
+}
+
+.candle-section h2,
+.plaster-section h2 {
+  font-style: italic;
+  color: #6d4c41;
+  opacity: 0.8;
+  font-size: 1.7rem; /* smaller than the about-title */
+  font-weight: 600;
+}
+
+.candle-text-inner p {
+  color: #4a3728;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .candle-body {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .candle-text-wrapper {
+    width: 90%;
+  }
+  
+  .candle-text-inner {
+    gap: 30px;
+    padding: 20px;
+    margin: 0 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .candle-section,
+  .plaster-section {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .candle-section h2,
+  .plaster-section h2 {
+    font-size: 1.4rem;
+  }
+  
+  .candle-text-inner p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .candle-text-inner {
+    gap: 25px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .candle-section,
+  .plaster-section {
+    max-width: 280px;
+    gap: 10px;
+  }
+  
+  .candle-section h2,
+  .plaster-section h2 {
+    font-size: 1.2rem;
+  }
+  
+  .candle-text-inner p {
+    font-size: 0.85rem;
+  }
+}

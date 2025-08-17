@@ -1,0 +1,180 @@
+/* About Section Styles - Simple & Fast */
+.about-body {
+  background: #faf8f5;
+  padding: 2rem;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-title {
+  font-style: italic;
+  color: #6d4c41;
+  opacity: 0.8;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.about-flex {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  align-items: stretch;
+  height: 250px;
+}
+
+/* Experience Cube - Simple */
+.about-experience {
+  background: #6d4c41;
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex: 0 0 300px;
+  box-shadow: 0 8px 20px rgba(109, 76, 65, 0.2);
+}
+
+.experience-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.counter-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.experience-label {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Description with Arc and Background */
+.about-description {
+  background: linear-gradient(rgba(245, 245, 220, 0.9), rgba(222, 184, 135, 0.8));
+  color: #4a3728;
+  padding: 2rem;
+  border-radius: 16px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  font-size: 1rem;
+  line-height: 1.6;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background overlay for description */
+.about-description::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.about-description > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-body {
+    padding: 1rem;
+    height: auto;
+    min-height: 50vh;
+  }
+  
+  .about-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-flex {
+    flex-direction: column;
+    gap: 1.5rem;
+    height: auto;
+  }
+  
+  .about-experience {
+    flex: none;
+    height: 150px;
+    font-size: 1.2rem;
+  }
+  
+  .experience-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .counter-text {
+    font-size: 1.4rem;
+  }
+  
+  .about-description {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 16px;
+    min-height: 200px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .about-body {
+    padding: 0.75rem;
+  }
+  
+  .about-title {
+    font-size: 1.75rem;
+  }
+  
+  .about-experience {
+    padding: 1.5rem;
+    height: 130px;
+  }
+  
+  .experience-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .counter-text {
+    font-size: 1.2rem;
+  }
+  
+  .about-description {
+    padding: 1.25rem;
+    font-size: 0.9rem;
+  }
+}

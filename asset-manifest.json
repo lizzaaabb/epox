@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/epox/static/css/main.ceb60a5c.css",
+    "main.js": "/epox/static/js/main.89f8a287.js",
+    "index.html": "/epox/index.html",
+    "main.ceb60a5c.css.map": "/epox/static/css/main.ceb60a5c.css.map",
+    "main.89f8a287.js.map": "/epox/static/js/main.89f8a287.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ceb60a5c.css",
+    "static/js/main.89f8a287.js"
+  ]
+}

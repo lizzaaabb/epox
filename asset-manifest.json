@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/epox/static/css/main.09836dfa.css",
-    "main.js": "/epox/static/js/main.0b2b36e4.js",
+    "main.css": "/epox/static/css/main.26d61e81.css",
+    "main.js": "/epox/static/js/main.cad89fbc.js",
     "index.html": "/epox/index.html",
-    "main.09836dfa.css.map": "/epox/static/css/main.09836dfa.css.map",
-    "main.0b2b36e4.js.map": "/epox/static/js/main.0b2b36e4.js.map"
+    "main.26d61e81.css.map": "/epox/static/css/main.26d61e81.css.map",
+    "main.cad89fbc.js.map": "/epox/static/js/main.cad89fbc.js.map"
   },
   "entrypoints": [
-    "static/css/main.09836dfa.css",
-    "static/js/main.0b2b36e4.js"
+    "static/css/main.26d61e81.css",
+    "static/js/main.cad89fbc.js"
   ]
 }
